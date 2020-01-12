@@ -3,8 +3,18 @@ import 'package:flutter/material.dart';
 void main() {
 
 
-  FutureWaitClass.func();
+  MapTestClass.func();
 
+}
+
+class MapTestClass {
+
+  static void func(){
+
+    Map map = Map();
+    //map的key不存在时不会崩溃，会返回null
+    print(map['key']?? 'key is null');
+  }
 }
 
 class FutureWaitClass {
