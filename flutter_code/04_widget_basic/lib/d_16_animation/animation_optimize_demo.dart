@@ -12,19 +12,27 @@ class _AnimationDemoState extends State<AnimationOptimizeDemo>
   AnimationController _animationController;
   Animation _animation;
   Animation _sizeAnimation;
+  Animation _colorAnimation;
+
   @override
   void initState() {
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 1),lowerBound: 1, upperBound: 100);
+    _animationController = AnimationController(
+        vsync: this,
+        duration: Duration(seconds: 2),
+        lowerBound: 1,
+        upperBound: 100);
 //    _animationController.addListener(() {
+//      print('addListener');
 //      setState(() {});
 //    });
 //    _animation = CurvedAnimation(parent: _animationController, curve: Curves.linear);
 //    _sizeAnimation = Tween(begin: 40.0, end: 100.0).animate(_animationController);
+    _colorAnimation = ColorTween(begin: Colors.orange, end: Colors.red)
+        .animate(_animationController);
     _animationController.addStatusListener((status) {
-      if(status == AnimationStatus.completed){
+      if (status == AnimationStatus.completed) {
         _animationController.reverse();
-      }else if(status == AnimationStatus.dismissed){
+      } else if (status == AnimationStatus.dismissed) {
         _animationController.forward();
       }
     });
@@ -44,6 +52,12 @@ class _AnimationDemoState extends State<AnimationOptimizeDemo>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+//          Icon(
+//            Icons.favorite,
+//            color: _colorAnimation.value,
+//            size: 50,
+////            size: _animationController.value,
+//          ),
           AnimatedBuilder(
             animation: _animationController,
             builder: (context, child){
@@ -54,21 +68,23 @@ class _AnimationDemoState extends State<AnimationOptimizeDemo>
               );
             },
           ),
-//          MyAnimationIcon(_sizeAnimation),
+//          MyAnimationIcon(_animationController),
 //          Icon(
 //            Icons.favorite,
 //            color: Colors.red,
 //            size: _sizeAnimation.value,
 //          ),
-          SizedBox(height: 40,),
+          SizedBox(
+            height: 40,
+          ),
           RaisedButton(
-            child: Text(_animationController.isAnimating ? "暂停动画":"开始动画"),
-            onPressed: (){
+            child: Text(_animationController.isAnimating ? "暂停动画" : "开始动画"),
+            onPressed: () {
               setState(() {});
               MyNotification().dispatch(context);
-              if(_animationController.isAnimating){
+              if (_animationController.isAnimating) {
                 _animationController.stop();
-              }else{
+              } else {
                 _animationController.forward();
               }
             },
@@ -80,8 +96,8 @@ class _AnimationDemoState extends State<AnimationOptimizeDemo>
 }
 
 class MyAnimationIcon extends AnimatedWidget {
+  MyAnimationIcon(Animation anim) : super(listenable: anim);
 
-  MyAnimationIcon(Animation anim):super(listenable:anim);
   @override
   Widget build(BuildContext context) {
     Animation anim = listenable;
