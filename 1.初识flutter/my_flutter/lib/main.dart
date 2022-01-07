@@ -24,7 +24,30 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:  Container(
+        alignment: const Alignment(0.0,0.0),
+        child: Stack(
+          alignment: const Alignment(1.0,0.0),
+          children: [
+            Container(
+              color: Colors.orange,
+              child: const Icon(Icons.face,size: 100,),
+            ),
+            Positioned(
+              top: 0,
+              child: Container(
+              color: Colors.red,
+              child: const Icon(Icons.radio,size: 80,),
+            ),),
+            Container(
+              color: Colors.green,
+              child: const Icon(Icons.favorite,size: 60,),
+            ),
+          ],
+        ),
+        color: Colors.white,
+      )
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
