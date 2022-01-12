@@ -1,5 +1,9 @@
 name: flutter_ui
+#此属性表示包名（package name），此属性是非常重要的，引入其他文件时需要使用此包名
+#import 'package:flutter_app/flutter_ui.dart';
+
 description: A new Flutter project.
+#属性是一个可选配置属性，是对当前项目的介绍
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -12,9 +16,12 @@ description: A new Flutter project.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
+#此属性应用程序的版本和内部版本号，格式为 x.x.x+x，例如：1.0.0+1，这个版本号称为 语义版本号
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+#上面的版本规定此应用或库只能在高于或等于2.1.0，低于3.0.0的Dart SDK版本上运行。
+
 
 dependencies:
   flutter:
@@ -27,7 +34,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+#dependencies 和 dev_dependencies 下包含应用程序所依赖的包，dependencies 和 dev_dependencies
+#就像其名字一样，dependencies 下的所有依赖会编译到项目中，而 dev_dependencies 仅仅是运行期间的包，比如自动生成代码的库。
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -43,7 +51,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  assets:
+    - images/pic_cheshangquan.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

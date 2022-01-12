@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/state_demo.dart';
+
+import 'gesture_demo.dart';
+import 'layout_demo.dart';
+import 'list_view_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,18 +14,30 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: Text('Flutter Demo'),),
         body: Center(
-          child: Container(
-            width: 400,
-            height: 400,
-            color: Colors.orange,
-            child: Center(
-              child: SizedBox.expand(
-                // height: double.infinity,
-                // width: double.infinity,
-                child: MyButton(),
+          child: ListView(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: 400,
+                    height: 400,
+                    color: Colors.orange,
+                    child: Center(
+                      child: SizedBox.expand(
+                        // height: double.infinity,
+                        // width: double.infinity,
+                        child: MyButton(),
+                      ),
+                    ),
+                  ),
+                  MyTestDemo(),
+                  MyGestureDemo(),
+                  LayoutDemo(),
+                  ListViewDemo(),
+                ],
               ),
-            ),
-          ),
+            ],
+          )
         ),
       ),
     );
